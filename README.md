@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# pokedex
+A simple pokedex app that utilizes PokeAPI to allow users to search for pokemon using their name or their pokemon number.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Live Demo
+- WIP
 
-## Available Scripts
+**Disclaimer**
+- Best viewed on a computer. Responsiveness WIP.
+- Current app only works up to generation VII (i.e. id# 1-809), you can enter Pokémon names and id's after generation VII but it's not guaranteed to work with our app. 
+- Has issues rendering pokemon with multiple words if you find any specific pokemon with sprites not working feel free to open an issue since they are very specific cases. (i.e. Type-null, Aegislash-shield, and any pokemon with male/female variants).
+## Tech Stack:
+- React
+- PokeAPI
+- Styled Components
+- React Sound
 
-In the project directory, you can run:
+## Components:
+- Search bar
+- Search button
+- Scroll wheel (arrows clickable)
+- Display
+- Container
+- Ditto button
 
-### `yarn start`
+### Search component:
+- Type in pokemon # or FULL NAME.
+- Click the magnifying glass to search (enter?)
+- Placeholder: “Please enter a pokemon name or number”
+- State: user’s input?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Scroll Wheel component:
+- Scroll wheel on the right moves us sequentially through pokemon
+- Up and down arrows are clickable
+- (initialize to state? currentNum? Other option is to just set the # within the pokemon object)
+- Ability to loop through Pokémon id# 1-809
+- Icebox: mousewheel event? up and down arrow keys?
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Pokemon display component:
+- Displays pokemon logo on mount
+- Display pokemon #, name, height, weight, type after search
+- If blank/error: pokemon not found try again.
 
-### `yarn test`
+### Ditto button: 
+- Single click: randomizes pokemon displayed (random number generator)
+- Icebox: double click? displays ditto’s information
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Music Play/Pause
+- Use React Sound library to allow users to play music while using the app
+### Container: 
+-Just holds everything
 
-### `yarn build`
+### First thoughts on state:
+- Based on what we talked about this is an educated guess on what our state would look like.
+```
+this.state={
+  userInput: “”,
+  data: {
+    id: 0,
+    name: “”,
+    height: “”,
+    weight: “”,
+    type: {
+      0: { //this could be an array if multiple types
+        type: {
+          name: “”,
+        },
+      },
+    },
+  },
+}
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Need to figure out:
+- How to get a photo/sprite of the pokemon
+- Convert promises to async await
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Icebox:
+- Sega cheat code => display our information.
